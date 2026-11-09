@@ -15,8 +15,8 @@ Puedes probar el sistema funcionando en tiempo real en el siguiente enlace:
 - **Reportes y Analítica:** Dashboards con KPIs de rendimiento.
 
 ## 🛠️ Tecnologías Utilizadas
-- **Backend:** PHP 8.x (Arquitectura MVC personalizada).
-- **Base de Datos:** MySQL / MariaDB (Relacional).
+- **Backend:** PHP Version 8.
+- **Base de Datos:** MySQL (Relacional).
 - **Módulo IA:** Python (Procesamiento de Lenguaje Natural).
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla), PWA (Service Workers).
 - **Librerías:** Composer (Gestión de dependencias PHP).
@@ -24,4 +24,5 @@ Puedes probar el sistema funcionando en tiempo real en el siguiente enlace:
 ## 👥 Mienbros del Proyecto
 - Isacc Fidel Mestra Ochoa
 - Juan Carlos Almanza Humanez
+  
 *Proyecto de Grado - Ingeniería de Sistemas - UNAD (2026)*
