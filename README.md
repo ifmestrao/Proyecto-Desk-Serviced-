@@ -21,16 +21,7 @@ Puedes probar el sistema funcionando en tiempo real en el siguiente enlace:
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla), PWA (Service Workers).
 - **Librerías:** Composer (Gestión de dependencias PHP).
 
-## ⚙️ Instalación y Configuración Local
-1. Clona el repositorio:
-   `git clone https://github.com/TU-USUARIO/TU-REPOSITORIO.git`
-2. Importa la base de datos: Ejecuta el archivo `Base de Datos - Estructura.sql` en tu gestor MySQL (phpMyAdmin).
-3. Configura las credenciales: Renombra el archivo `config/database.example.php` a `config/database.php` y edita tus credenciales locales (Host, User, Password, DB).
-4. Instala las dependencias de PHP:
-   `composer install`
-5. Levanta tu servidor local (XAMPP/Laragon) y accede al proyecto.
-
-## 👥 Autores
+## 👥 Mienbros del Proyecto
 - Isacc Fidel Mestra Ochoa
 - Juan Carlos Almanza Humanez
 *Proyecto de Grado - Ingeniería de Sistemas - UNAD (2026)*
