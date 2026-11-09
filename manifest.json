@@ -1,0 +1,21 @@
+{
+    "name": "Desk Service",
+    "short_name": "Desk Service",
+    "description": "Sistema de Mesa de Ayuda (Help Desk) Empresarial",
+    "start_url": "./dashboard.php",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0d6efd",
+    "icons": [
+        {
+            "src": "assets/img/Mesadeservicio.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/Mesadeservicio.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+# 1. Archivos sensibles: nunca servirlos por HTTP
+<FilesMatch "^(.*\.(md|py|sql|env|log|bak|swp|sh|dist|lock)|composer\.json|composer\.lock)$">
+    Require all denied
+</FilesMatch>
+
+# 2. Scripts de mantenimiento / diagnóstico / migración: bloqueados por HTTP.
+#    (Ejecútalos solo por línea de comandos si los necesitas, o quítalos del servidor.)
+<FilesMatch "^(debug|diagnostico_integraciones|check_[A-Za-z_]+|fix_[A-Za-z_]+|force_webhooks|poblar_tenant_id|upgrade_[A-Za-z_]+|simulate_telegram|test_tickets|setup|setup_inventory|setup_tools|install_database|db_update|update_sla_db|get_ngrok_[A-Za-z]+|count_kb|import_csv_kb|set_telegram_webhook)\.php$">
+    Require all denied
+</FilesMatch>
+
+# 3. Prevenir listado de directorios
+Options -Indexes -MultiViews
+
+# 4. Rewrite (URLs sin .php)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^([^\.]+)$ $1.php [NC,L]
+</IfModule>
+
+# 5. Cabeceras de seguridad
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always unset X-Powered-By
+</IfModule>
+
+ServerSignature Off
