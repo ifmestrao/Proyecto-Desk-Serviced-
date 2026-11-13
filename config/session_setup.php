@@ -9,10 +9,7 @@ $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
           || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https')
           || (app_env('FORCE_SECURE') === '1');
 
-// Tiempos (configurables en config/local.env)
-//  SESSION_TIMEOUT  : segundos de inactividad antes de pedir login de nuevo (por defecto 8 h)
-//  SESSION_LIFETIME : duración máxima de la cookie de sesión (por defecto 7 días)
-//  REMEMBER_DAYS    : días que dura "Mantener sesión iniciada" (por defecto 30)
+
 $timeout  = max(300, (int)app_env('SESSION_TIMEOUT', 28800));
 $lifetime = max($timeout, (int)app_env('SESSION_LIFETIME', 604800));
 
@@ -31,9 +28,7 @@ if (session_status() === PHP_SESSION_NONE) {
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
 
-    // Causa típica de "se me cierra la sesión": en hosting compartido PHP borra los archivos de sesión a los ~24 min
-    // (gc_maxlifetime por defecto 1440 s) o los limpia otro sitio que comparte la carpeta temporal.
-    // Solución: carpeta propia y gc_maxlifetime acorde a nuestros tiempos.
+ 
     ini_set('session.gc_maxlifetime', (string)$lifetime);
     ini_set('session.gc_probability', '1');
     ini_set('session.gc_divisor', '100');
@@ -77,7 +72,7 @@ if (!isset($_SESSION['CREATED'])) {
     $_SESSION['CREATED'] = $now;
 }
 
-// ── "Mantener sesión iniciada" ──────────────────────────────────────────────
+
 $__script = basename($_SERVER['SCRIPT_NAME'] ?? '');
 $__is_logout = ($__script === 'logout.php')
     || ($__script === 'auth.php' && (($_GET['action'] ?? $_POST['action'] ?? '') === 'logout'));
@@ -90,14 +85,14 @@ if ($__is_logout) {
         remember_forget($pdo);
     }
 } else {
-    // a) Sesión caducada pero con cookie válida: reabrir sola
+
     if (empty($_SESSION['user_id']) && !empty($_COOKIE['HELPDESK_REMEMBER'])) {
         require_once __DIR__ . '/db.php';
         require_once __DIR__ . '/middleware_tenant.php';
         require_once __DIR__ . '/../includes/remember_me.php';
         remember_try_login($pdo);
     }
-    // b) Acaba de iniciar sesión pidiendo recordarla: emitir la cookie larga (solo si el login terminó bien y hace < 15 min)
+   
     if (!empty($_SESSION['user_id']) && isset($_SESSION['remember_pending'])) {
         $__pending = (int)$_SESSION['remember_pending'];
         unset($_SESSION['remember_pending']);
