@@ -6,6 +6,6 @@ return [
     'user' => app_env('SMTP_USER', ''),
     'pass' => app_env('SMTP_PASS', ''),
     'encryption' => app_env('SMTP_ENCRYPTION', 'tls'),
-    'from' => app_env('SMTP_FROM', 'no-reply@example.com'),
+    'from' => app_env('SMTP_FROM', 'no-reply@dominio.com'),
     'from_name' => app_env('SMTP_FROM_NAME', 'Desk Service')
 ];
