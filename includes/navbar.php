@@ -191,26 +191,7 @@
                     </div>
                 </div>
                 
-                <!-- Grupo Seguridad -->
-                <a class="list-group-item list-group-item-action bg-transparent second-text fw-bold nav-link-collapse <?php echo in_array($current, ['seguridad_resumen.php', 'seguridad_auditoria.php', 'seguridad_scanner.php']) ? '' : 'collapsed'; ?>" 
-                   data-bs-toggle="collapse" href="#collapseSeguridad" role="button" aria-expanded="<?php echo in_array($current, ['seguridad_resumen.php', 'seguridad_auditoria.php', 'seguridad_scanner.php']) ? 'true' : 'false'; ?>">
-                    <i class="fas fa-shield-alt" style="color: rgb(116, 192, 252);"></i>
-                    <span>Seguridad</span>
-                    <i class="fas fa-chevron-down rotate-icon"></i>
-                </a>
-                <div class="collapse <?php echo in_array($current, ['seguridad_resumen.php', 'seguridad_auditoria.php', 'seguridad_scanner.php']) ? 'show' : ''; ?>" id="collapseSeguridad" data-bs-parent="#sidebar-menu">
-                    <div class="collapse-inner">
-                        <a href="seguridad_resumen" class="list-group-item list-group-item-action bg-transparent second-text fw-bold <?php echo $current == 'seguridad_resumen.php' ? 'active' : ''; ?>">
-                            <i class="fas fa-solid fa-square-poll-horizontal" style="color: rgb(116, 192, 252);"></i>Resumen
-                        </a>
-                        <a href="seguridad_auditoria" class="list-group-item list-group-item-action bg-transparent second-text fw-bold <?php echo $current == 'seguridad_auditoria.php' ? 'active' : ''; ?>">
-                            <i class="fas fa-solid fa-magnifying-glass" style="color: rgb(116, 192, 252);"></i>Auditoría
-                        </a>
-                        <a href="seguridad_scanner" class="list-group-item list-group-item-action bg-transparent second-text fw-bold <?php echo $current == 'seguridad_scanner.php' ? 'active' : ''; ?>">
-                            <i class="fa-brands fa-cloudscale fa-lg" style="color: rgb(116, 192, 252);"></i>Escáner
-                        </a>
-                    </div>
-                </div>
+                
                 
             <?php else: ?>
                 <a href="dashboard_user" class="list-group-item list-group-item-action bg-transparent second-text fw-bold <?php echo ($current == 'dashboard_user.php' || $isTicketDetails) ? 'active' : ''; ?>">
